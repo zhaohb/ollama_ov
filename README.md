@@ -2,16 +2,13 @@
   <a href="https://ollama.com" />
     <img alt="ollama" height="100px" src="https://github.com/ollama/ollama/assets/3325447/0d0b44e2-8f4a-4e99-9b52-a5c1c741c8f7">
   </a>
-  <span style="font-size: 40px; display: inline-flex; align-items: center; justify-content: center; height: 100px; line-height: 100px;">+</span>
   <a href="https://github.com/openvinotoolkit/openvino" />
     <img alt="openvino" height="100px" src="./images/openvino-logo-purple-black.svg">
   </a>
 </div>
 
-<div align="center">
-  <div>&nbsp;</div>
-  <img src="logo.png" width="300"/> 
-</div>
+# OpenVINO Integration with Ollama
+
 
 <details>
   <summary>Click here to expand/collapse content</summary>
