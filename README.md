@@ -583,7 +583,6 @@ Getting started with large language models and using the [GenAI](https://github.
 
 ### Windows
 
-[Download](https://ollama.com/download/OllamaSetup.exe)
 
 ## Model library
 The native Ollama only supports models in the GGUF format, but GenAI requires models in the OpenVINO format. Therefore, we have enabled support for OpenVINO model files in Ollama.
