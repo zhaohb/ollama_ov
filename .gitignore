@@ -3,11 +3,9 @@
 .env
 .venv
 .swp
-dist
 build
 ollama
 .cache
-*.exe
 .idea
 test_data
 *.crt

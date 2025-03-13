@@ -581,9 +581,6 @@ Getting started with large language models and using the [GenAI](https://github.
   <img src="./images/ollama_genai_demo.gif" alt="Ollama-OV" width="800" height="500">
 </div>
 
-### Windows
-
-
 ## Model library
 The native Ollama only supports models in the GGUF format, but GenAI requires models in the OpenVINO format. Therefore, we have enabled support for OpenVINO model files in Ollama.
 
@@ -697,6 +694,8 @@ Install prerequisites:
    ```shell
    go build -o ollama.exe
    ```
+
+5. If you don't want to recompile ollama, you can choose to directly use the compiled executable file, and then initialize the genai environment in step 2 to run ollama directly. The compiled executable file is placed in the dist directory.
 
 ### Running local builds
 
