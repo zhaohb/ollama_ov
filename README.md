@@ -1,6 +1,10 @@
 <div align="center">
-  <a href="https://ollama.com" />
-    <img alt="ollama" height="200px" src="https://github.com/ollama/ollama/assets/3325447/0d0b44e2-8f4a-4e99-9b52-a5c1c741c8f7">
+  <a href="https://ollama.com" />
+    <img alt="ollama" height="100px" src="https://github.com/ollama/ollama/assets/3325447/0d0b44e2-8f4a-4e99-9b52-a5c1c741c8f7">
+  </a>
+  <span style="font-size: 40px; display: inline-flex; align-items: center; justify-content: center; height: 100px; line-height: 100px;">+</span>
+  <a href="https://github.com/openvinotoolkit/openvino" />
+    <img alt="openvino" height="100px" src="./images/openvino-logo-purple-black.svg">
   </a>
 </div>
 
@@ -495,7 +499,7 @@ See the [API documentation](./docs/api.md) for all endpoints.
 - [Ollamaclient for Golang](https://github.com/xyproto/ollamaclient)
 - [High-level function abstraction in Go](https://gitlab.com/tozd/go/fun)
 - [Ollama PHP](https://github.com/ArdaGnsrn/ollama-php)
-- [Agents-Flex for Java](https://github.com/agents-flex/agents-flex) with [example](https://github.com/agents-flex/agents-flex/tree/main/agents-flex-llm/agents-flex-llm-ollama/src/test/java/com/agentsflex/llm/ollama)
+- [Agents-Flex for Java](https://github.com/agents-flex/agents-flex) with [example](https://github.com/agents-flex/agents-flex/tree/main/agents-flex-llm/agents-flex-llm-ollama)
 - [Parakeet](https://github.com/parakeet-nest/parakeet) is a GoLang library, made to simplify the development of small generative AI applications with Ollama.
 - [Haverscript](https://github.com/andygill/haverscript) with [examples](https://github.com/andygill/haverscript/tree/main/examples)
 - [Ollama for Swift](https://github.com/mattt/ollama-swift)
