@@ -600,7 +600,7 @@ We added two new parameters to Modelfile based on the original parameters:
 ### Import from openVINO IR
 How to create an Ollama model based on Openvino IR
 
-<div style="text-align:center;">
+<div align="center">
   <img src="./images/ollama-create.png" alt="How to create an Ollama model based on Openvino IR" width="400" height="400">
 </div>
 
