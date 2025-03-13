@@ -56,6 +56,8 @@ type registryOptions struct {
 
 type Model struct {
 	Name           string `json:"name"`
+	Type           string `json:"modeltype"`
+	InferDevice    string `json:"inferdevice"`
 	Config         ConfigV2
 	ShortName      string
 	ModelPath      string
@@ -192,6 +194,7 @@ type ConfigV2 struct {
 	ModelFamily   string   `json:"model_family"`
 	ModelFamilies []string `json:"model_families"`
 	ModelType     string   `json:"model_type"`
+	InferDevice   string   `json:"infer_device"`
 	FileType      string   `json:"file_type"`
 
 	// required by spec
@@ -268,6 +271,18 @@ func GetModel(name string) (*Model, error) {
 		case "application/vnd.ollama.image.model":
 			model.ModelPath = filename
 			model.ParentModel = layer.From
+		case "application/vnd.ollama.image.modeltype":
+			bts, err := os.ReadFile(filename)
+			if err != nil {
+				return nil, err
+			}
+			model.Type = string(bts)
+		case "application/vnd.ollama.image.inferdevice":
+			bts, err := os.ReadFile(filename)
+			if err != nil {
+				return nil, err
+			}
+			model.InferDevice = string(bts)
 		case "application/vnd.ollama.image.embed":
 			// Deprecated in versions  > 0.1.2
 			// TODO: remove this warning in a future version

@@ -514,6 +514,8 @@ type Options struct {
 	NumPredict       int      `json:"n_predict"`
 	TopK             int      `json:"top_k"`
 	TopP             float32  `json:"top_p"`
+	StopId           []string `json:"stop_id,omitempty"`
+	MaxNewToken      int      `json:"max_new_token,omitempty"`
 	MinP             float32  `json:"min_p"`
 	TypicalP         float32  `json:"typical_p"`
 	RepeatLastN      int      `json:"repeat_last_n"`

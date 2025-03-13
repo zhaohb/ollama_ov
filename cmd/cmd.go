@@ -34,7 +34,9 @@ import (
 	"github.com/ollama/ollama/api"
 	"github.com/ollama/ollama/envconfig"
 	"github.com/ollama/ollama/format"
-	"github.com/ollama/ollama/llama"
+
+	// "github.com/ollama/ollama/llama"
+	genairunner "github.com/ollama/ollama/genai/runner"
 	"github.com/ollama/ollama/parser"
 	"github.com/ollama/ollama/progress"
 	"github.com/ollama/ollama/runner"
@@ -94,16 +96,27 @@ func CreateHandler(cmd *cobra.Command, args []string) error {
 	if err != nil {
 		return err
 	}
+	log.Printf(modelfile.String())
 
 	status := "gathering model components"
 	spinner := progress.NewSpinner(status)
 	p.Add(status, spinner)
 
+	log.Printf("filepath.Dir(filename): %s", filepath.Dir(filename))
 	req, err := modelfile.CreateRequest(filepath.Dir(filename))
 	if err != nil {
 		return err
 	}
 	spinner.Stop()
+
+	// log.Printf("Model: %s", req.Model)
+	// log.Printf("Name: %s", req.Name)
+	// log.Printf("From: %s", req.From)
+	// log.Printf("Files: %v", req.Files)
+	// log.Printf("Stream: %v", req.Stream)
+	// log.Printf("ModelType: %s", req.ModelType)
+	// log.Printf("Parameters: %v", req.Parameters)
+	// log.Printf("System: %s", req.System)
 
 	req.Name = args[0]
 	quantize, _ := cmd.Flags().GetString("quantize")
@@ -343,6 +356,8 @@ func RunHandler(cmd *cobra.Command, args []string) error {
 	// need different behavior anyways.
 	opts.MultiModal = len(info.ProjectorInfo) != 0 || envconfig.NewEngine()
 	opts.ParentModel = info.Details.ParentModel
+	opts.ModelType = info.ModelType
+	opts.InferDevice = info.InferDevice
 
 	if interactive {
 		if err := loadOrUnloadModel(cmd, &opts); err != nil {
@@ -363,6 +378,8 @@ func RunHandler(cmd *cobra.Command, args []string) error {
 
 		return generateInteractive(cmd, opts)
 	}
+	// log.Printf("opts.ModelType %s", opts.ModelType)
+	// log.Printf("opts.Model %s", opts.Model)
 	return generate(cmd, opts)
 }
 
@@ -781,6 +798,8 @@ type generateContextKey string
 
 type runOptions struct {
 	Model       string
+	ModelType   string
+	InferDevice string
 	ParentModel string
 	Prompt      string
 	Messages    []api.Message
@@ -982,14 +1001,16 @@ func generate(cmd *cobra.Command, opts runOptions) error {
 	}
 
 	request := api.GenerateRequest{
-		Model:     opts.Model,
-		Prompt:    opts.Prompt,
-		Context:   generateContext,
-		Images:    opts.Images,
-		Format:    json.RawMessage(opts.Format),
-		System:    opts.System,
-		Options:   opts.Options,
-		KeepAlive: opts.KeepAlive,
+		Model:       opts.Model,
+		ModelType:   opts.ModelType,
+		InferDevice: opts.InferDevice,
+		Prompt:      opts.Prompt,
+		Context:     generateContext,
+		Images:      opts.Images,
+		Format:      json.RawMessage(opts.Format),
+		System:      opts.System,
+		Options:     opts.Options,
+		KeepAlive:   opts.KeepAlive,
 	}
 
 	if err := client.Generate(ctx, &request, fn); err != nil {
@@ -1272,9 +1293,22 @@ func NewCLI() *cobra.Command {
 		RunE:    DeleteHandler,
 	}
 
+	genairunnerCmd := &cobra.Command{
+		Use:    "genairunner",
+		Short:  "OpenVINO Inference",
+		Hidden: true,
+		RunE: func(cmd *cobra.Command, args []string) error {
+			return genairunner.Execute(os.Args[1:])
+		},
+		FParseErrWhitelist: cobra.FParseErrWhitelist{UnknownFlags: true},
+	}
+	genairunnerCmd.SetHelpFunc(func(cmd *cobra.Command, args []string) {
+		_ = genairunner.Execute(args[1:])
+	})
+
 	runnerCmd := &cobra.Command{
 		Use:    "runner",
-		Short:  llama.PrintSystemInfo(),
+		Short:  "llama.cpp infer",
 		Hidden: true,
 		RunE: func(cmd *cobra.Command, args []string) error {
 			return runner.Execute(os.Args[1:])
@@ -1342,6 +1376,7 @@ func NewCLI() *cobra.Command {
 		copyCmd,
 		deleteCmd,
 		runnerCmd,
+		genairunnerCmd,
 	)
 
 	return rootCmd

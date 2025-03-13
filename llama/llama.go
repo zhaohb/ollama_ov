@@ -59,16 +59,7 @@ func BackendInit() {
 }
 
 func PrintSystemInfo() string {
-	var compiler string
-	switch C.get_compiler() {
-	case C.COMP_UNKNOWN:
-		compiler = "cgo(unknown_compiler)"
-	case C.COMP_GCC:
-		compiler = "cgo(gcc)"
-	case C.COMP_CLANG:
-		compiler = "cgo(clang)"
-	}
-	return C.GoString(C.llama_print_system_info()) + compiler
+	return "zhaohb test"
 }
 
 var logLevel atomic.Int32
