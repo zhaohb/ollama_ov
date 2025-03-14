@@ -601,9 +601,9 @@ How to create an Ollama model based on Openvino IR
 </div>
 
 #### Example
-Let's take [OpenVINO/TinyLlama-1.1B-Chat-v1.0-int4-ov](https://ollama.com/download/OllamaSetup.exe) as an example.
+Let's take [OpenVINO/TinyLlama-1.1B-Chat-v1.0-int4-ov](https://huggingface.co/OpenVINO/TinyLlama-1.1B-Chat-v1.0-int4-ov) as an example.
 
-1. Download the OpenVINO model from [OpenVINO/TinyLlama-1.1B-Chat-v1.0-int4-ov](https://ollama.com/download/OllamaSetup.exe)
+1. Download the OpenVINO model from [OpenVINO/TinyLlama-1.1B-Chat-v1.0-int4-ov](https://huggingface.co/OpenVINO/TinyLlama-1.1B-Chat-v1.0-int4-ov)
 
 2. Package OpenVINO IR into a tar.gz file
     ```bash
