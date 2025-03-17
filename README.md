@@ -604,10 +604,14 @@ How to create an Ollama model based on Openvino IR
 Let's take [OpenVINO/TinyLlama-1.1B-Chat-v1.0-int4-ov](https://huggingface.co/OpenVINO/TinyLlama-1.1B-Chat-v1.0-int4-ov) as an example.
 
 1. Download the OpenVINO model from [OpenVINO/TinyLlama-1.1B-Chat-v1.0-int4-ov](https://huggingface.co/OpenVINO/TinyLlama-1.1B-Chat-v1.0-int4-ov)
+    ```shell
+    pip install -U huggingface_hub
+    huggingface-cli download --resume-download OpenVINO/TinyLlama-1.1B-Chat-v1.0-int4-ov  --local-dir  TinyLlama-1.1B-Chat-v1.0-int4-ov --local-dir-use-symlinks False
+    ```
 
 2. Package OpenVINO IR into a tar.gz file
     ```bash
-    tar -zcvf TinyLlama-1.1B-Chat-v1.0-int4-ov.tar.gz TinyLlama-1.1B-Chat-v1
+    tar -zcvf TinyLlama-1.1B-Chat-v1.0-int4-ov.tar.gz TinyLlama-1.1B-Chat-v1.0-int4-ov
     ```
 3. Create a file named `Modelfile`, with a `FROM` instruction with the local filepath to the model you want to import.
 
@@ -702,6 +706,12 @@ Install prerequisites:
    ```
 
 6. If you don't want to recompile ollama, you can choose to directly use the compiled executable file, and then initialize the genai environment in step 2 to run ollama directly. The compiled executable file is placed in the dist directory.
+   
+   But if you encounter the error when executing ollama.exe, it is recommended that you recompile from source code.
+   ```shell
+   This version of ollama.exe is not compatible with the version of Windows you're running. Check your computer's system information and then contact the software publisher.'
+   ```
+    
 
 ### Running local builds
 
