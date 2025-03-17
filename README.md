@@ -671,12 +671,18 @@ Install prerequisites:
 
 ### Windows
 
-1. Enable CGO:
+1. clone repo
+   ```shell
+   git lfs install
+   git lfs clone https://github.com/zhaohb/ollama_ov.git
+   ```
+
+2. Enable CGO:
    ```shell
    go env -w CGO_ENABLED=1
    ```
 
-2. Initialize the GenAI environment
+3. Initialize the GenAI environment
 
    Download GenAI runtime from [GenAI](https://storage.openvinotoolkit.org/repositories/openvino_genai/packages/nightly/2025.1.0.0.dev20250308/openvino_genai_windows_2025.1.0.0.dev20250308_x86_64.zip), then extract it to a directory openvino_genai_windows_2025.1.0.0.dev20250308_x86_64.
    ```shell
@@ -684,18 +690,18 @@ Install prerequisites:
    setupvars.bat
    ```
   
-3. Setting cgo environment variables
+4. Setting cgo environment variables
    ```shell
    set CGO_LDFLAGS=-L%OpenVINO_DIR%\..\lib\intel64\Release
    set CGO_CFLAGS=-I%OpenVINO_DIR%\..\include 
    ```
 
-4. building Ollama
+5. building Ollama
    ```shell
    go build -o ollama.exe
    ```
 
-5. If you don't want to recompile ollama, you can choose to directly use the compiled executable file, and then initialize the genai environment in step 2 to run ollama directly. The compiled executable file is placed in the dist directory.
+6. If you don't want to recompile ollama, you can choose to directly use the compiled executable file, and then initialize the genai environment in step 2 to run ollama directly. The compiled executable file is placed in the dist directory.
 
 ### Running local builds
 
