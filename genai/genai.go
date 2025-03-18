@@ -7,6 +7,7 @@ package genai
 #cgo LDFLAGS: -lopenvino_genai
 #cgo LDFLAGS: -lopenvino
 #cgo LDFLAGS: -lopenvino_c
+#cgo LDFLAGS: -lopenvino_genai_c
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -195,18 +196,18 @@ func GenerateTextWithMetrics(pipeline *C.ov_genai_llm_pipeline, input string, sa
 	cInput := C.CString(input)
 	defer C.free(unsafe.Pointer(cInput))
 
-	bufferSize := C.int(samplingparameters.MaxNewToken)
-	cOutput := C.malloc(C.size_t(bufferSize))
+	bufferSize := C.size_t(samplingparameters.MaxNewToken)
+	cOutput := C.malloc(bufferSize)
 	defer C.free(cOutput)
 
 	cConfig := SetSamplingParams(samplingparameters)
 	var result *C.ov_genai_decoded_results
 
 	C.ov_genai_llm_pipeline_start_chat(pipeline)
-	C.ov_genai_llm_pipeline_generate_decoded_results(pipeline, cInput, (*C.ov_genai_generation_config)(cConfig), (*C.stream_callback)(nil), &result)
+	C.ov_genai_llm_pipeline_generate(pipeline, cInput, (*C.ov_genai_generation_config)(cConfig), (*C.stream_callback)(nil), &result)
 	C.ov_genai_llm_pipeline_finish_chat(pipeline)
 
-	C.ov_genai_decoded_results_get_string(result, (*C.char)(cOutput), C.size_t(samplingparameters.MaxNewToken))
+	C.ov_genai_decoded_results_get_string(result, (*C.char)(cOutput), &bufferSize)
 
 	var metrics *C.ov_genai_perf_metrics
 	C.ov_genai_decoded_results_get_perf_metrics(result, &metrics)
@@ -224,9 +225,13 @@ func GenerateText(pipeline *C.ov_genai_llm_pipeline, input string, stream_callba
 	cOutput := C.malloc(C.size_t(bufferSize))
 	defer C.free(cOutput)
 
+	var result *C.ov_genai_decoded_results
+
 	C.ov_genai_llm_pipeline_start_chat(pipeline)
-	C.ov_genai_llm_pipeline_generate(pipeline, cInput, (*C.ov_genai_generation_config)(nil), &stream_callback, (*C.char)(cOutput), bufferSize)
+	C.ov_genai_llm_pipeline_generate(pipeline, cInput, (*C.ov_genai_generation_config)(nil), &stream_callback, &result)
 	C.ov_genai_llm_pipeline_finish_chat(pipeline)
+
+	C.ov_genai_decoded_results_get_string(result, (*C.char)(cOutput), &bufferSize)
 
 	return C.GoString((*C.char)(cOutput))
 }

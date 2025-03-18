@@ -227,7 +227,7 @@ func (s *Server) processBatch() error {
 		for _, input := range seq.inputs {
 			// result := genai.GenerateText(s.model, input.prompt)
 			result := genai.GenerateTextWithMetrics(s.model, input.prompt, seq.samplingparameters)
-			// fmt.Println("result: ", result)
+			fmt.Println("result: ", result)
 			seq.pendingResponses = append(seq.pendingResponses, result)
 			// seq.pendingResponses := result
 		}
