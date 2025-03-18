@@ -605,6 +605,7 @@ Let's take [OpenVINO/TinyLlama-1.1B-Chat-v1.0-int4-ov](https://huggingface.co/Op
 
 1. Download the OpenVINO model from [OpenVINO/TinyLlama-1.1B-Chat-v1.0-int4-ov](https://huggingface.co/OpenVINO/TinyLlama-1.1B-Chat-v1.0-int4-ov)
     ```shell
+    set HF_ENDPOINT=https://hf-mirror.com
     pip install -U huggingface_hub
     huggingface-cli download --resume-download OpenVINO/TinyLlama-1.1B-Chat-v1.0-int4-ov  --local-dir  TinyLlama-1.1B-Chat-v1.0-int4-ov --local-dir-use-symlinks False
     ```
@@ -666,7 +667,7 @@ ollama.exe stop tiny_llama_ov:v1
 
 `ollama serve` is used when you want to start ollama without running the desktop application.
 
-## Building
+## Building from source
 
 Install prerequisites:
 
