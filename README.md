@@ -582,7 +582,22 @@ Getting started with large language models and using the [GenAI](https://github.
 </div>
 
 ## Model library
-The native Ollama only supports models in the GGUF format, but GenAI requires models in the OpenVINO format. Therefore, we have enabled support for OpenVINO model files in Ollama.
+The native Ollama only supports models in the GGUF format, the Ollama-OV invoke OpenVINO GenAI which requires models in the OpenVINO format. Therefore, we have enabled support for OpenVINO model files in Ollama. For public LLMs, you can access and download OpenVINO IR model from HuggingFace or ModelScope:
+| Model              | Parameters | Size  | Download                         |
+| ------------------ | ---------- | ----- | -------------------------------- |
+| DeepSeek-R1-Distill-Qwen-1.5B-int4-ov     | 1.5B    | 1.1GB | [HF](), [ModelScope]()         |
+| DeepSeek-R1-Distill-Qwen-7B-int4-ov       | 7B      | 4.3GB | [HF](), [ModelScope]()         |
+| DeepSeek-R1-Distill-Qwen-14B-int4-ov      | 8B      | 4.5GB | [HF](), [ModelScope]()         |
+| Phi-3.5-mini-instruct-int4-ov             | 3.8B    | 2.1GB | [HF](https://hf-mirror.com/OpenVINO/Phi-3.5-mini-instruct-int4-ov/tree/main), [ModelScope](https://modelscope.cn/models/OpenVINO/Phi-3.5-mini-instruct-int4-ov)                  |
+| Phi-3-mini-128k-instruct-int4-ov          | 3.8B    | 2.5GB | [HF](https://hf-mirror.com/OpenVINO/Phi-3-mini-128k-instruct-int4-ov), [ModelScope](https://modelscope.cn/models/OpenVINO/Phi-3-mini-128k-instruct-int4-ov)               |
+| Phi-3-mini-4k-instruct-int4-ov            | 3.8B    | 2.2GB | [HF](https://hf-mirror.com/OpenVINO/Phi-3-mini-4k-instruct-int4-ov), [ModelScope](https://modelscope.cn/models/OpenVINO/Phi-3-mini-4k-instruct-int4-ov)                 |
+| Phi-3-medium-4k-instruct-int4-ov          | 14B     | 7.4GB | [HF](https://hf-mirror.com/OpenVINO/Phi-3-medium-4k-instruct-int4-ov), [ModelScope](https://modelscope.cn/models/OpenVINO/Phi-3-medium-4k-instruct-int4-ov)               |
+| Qwen2.5-0.5B-Instruct-openvino-ovms-int4  | 0.5B    | 0.3GB  | [ModelScope](https://modelscope.cn/models/kafufa/Qwen2.5-0.5B-Instruct-openvino-ovms-int4/summary) |
+| Qwen2.5-1.5B-Instruct-openvino-ovms-int4  | 1.5B    | 0.9GB  | [ModelScope](https://modelscope.cn/models/kafufa/Qwen2.5-1.5B-Instruct-openvino-ovms-int4/summary) |
+| gemma-2-9b-it-int4-ov                     | 9B      | 5.3GB  | [HF](https://hf-mirror.com/OpenVINO/gemma-2-9b-it-int4-ov), [ModelScope](https://modelscope.cn/models/OpenVINO/gemma-2-9b-it-int4-ov/summary) |
+| TinyLlama-1.1B-Chat-v1.0-int4-ov          | 1.1B         | 0.6GB | [HF](https://hf-mirror.com/OpenVINO/TinyLlama-1.1B-Chat-v1.0-int4-ov), [ModelScope](https://modelscope.cn/models/OpenVINO/TinyLlama-1.1B-Chat-v1.0-int4-ov)            |
+
+Just provide above model link as example, for other LLMs, you can check OpenVINO GenAI model support list. If you have customized LLM, please follow [model conversion step of GenAI](https://github.com/openvinotoolkit/openvino.genai?tab=readme-ov-file#converting-and-compressing-text-generation-model-from-hugging-face-library). 
 
 ## Ollama Model File
 We added two new parameters to Modelfile based on the original parameters:
