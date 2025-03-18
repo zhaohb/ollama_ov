@@ -603,16 +603,23 @@ How to create an Ollama model based on Openvino IR
 #### Example
 Let's take [OpenVINO/TinyLlama-1.1B-Chat-v1.0-int4-ov](https://huggingface.co/OpenVINO/TinyLlama-1.1B-Chat-v1.0-int4-ov) as an example.
 
-1. Download the OpenVINO model from [OpenVINO/TinyLlama-1.1B-Chat-v1.0-int4-ov](https://huggingface.co/OpenVINO/TinyLlama-1.1B-Chat-v1.0-int4-ov)
+1. Download the OpenVINO model 
+   1. Download from HF:  [OpenVINO/TinyLlama-1.1B-Chat-v1.0-int4-ov](https://huggingface.co/OpenVINO/TinyLlama-1.1B-Chat-v1.0-int4-ov)
 
-   If your network access to HuggingFace is unstable, you can try to use a proxy image to pull the model.
-    ```shell
-    set HF_ENDPOINT=https://hf-mirror.com
-    ```
-    ```
-    pip install -U huggingface_hub
-    huggingface-cli download --resume-download OpenVINO/TinyLlama-1.1B-Chat-v1.0-int4-ov  --local-dir  TinyLlama-1.1B-Chat-v1.0-int4-ov --local-dir-use-symlinks False
-    ```
+      If your network access to HuggingFace is unstable, you can try to use a proxy image to pull the model.
+      ```shell
+      set HF_ENDPOINT=https://hf-mirror.com
+      ```
+      ```
+      pip install -U huggingface_hub
+      huggingface-cli download --resume-download OpenVINO/TinyLlama-1.1B-Chat-v1.0-int4-ov  --local-dir  TinyLlama-1.1B-Chat-v1.0-int4-ov --local-dir-use-symlinks False
+      ```
+
+   2. Download from ModelScope: [OpenVINO/TinyLlama-1.1B-Chat-v1.0-int4-ov](https://modelscope.cn/models/OpenVINO/TinyLlama-1.1B-Chat-v1.0-int4-ov/files)
+      ```shell
+      pip install modelscope
+      modelscope download --model OpenVINO/TinyLlama-1.1B-Chat-v1.0-int4-ov --local_dir ./TinyLlama-1.1B-Chat-v1.0-int4-ov
+      ```
 
 2. Package OpenVINO IR into a tar.gz file
     ```bash
