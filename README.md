@@ -604,8 +604,12 @@ How to create an Ollama model based on Openvino IR
 Let's take [OpenVINO/TinyLlama-1.1B-Chat-v1.0-int4-ov](https://huggingface.co/OpenVINO/TinyLlama-1.1B-Chat-v1.0-int4-ov) as an example.
 
 1. Download the OpenVINO model from [OpenVINO/TinyLlama-1.1B-Chat-v1.0-int4-ov](https://huggingface.co/OpenVINO/TinyLlama-1.1B-Chat-v1.0-int4-ov)
+
+   If your network access to HuggingFace is unstable, you can try to use a proxy image to pull the model.
     ```shell
     set HF_ENDPOINT=https://hf-mirror.com
+    ```
+    ```
     pip install -U huggingface_hub
     huggingface-cli download --resume-download OpenVINO/TinyLlama-1.1B-Chat-v1.0-int4-ov  --local-dir  TinyLlama-1.1B-Chat-v1.0-int4-ov --local-dir-use-symlinks False
     ```
@@ -628,13 +632,13 @@ Let's take [OpenVINO/TinyLlama-1.1B-Chat-v1.0-int4-ov](https://huggingface.co/Op
 4. Create the model in Ollama
 
    ```shell
-   ollama.exe create tiny_llama_ov:v1 -f Modelfile
+   ollama create tiny_llama_ov:v1 -f Modelfile
    ```
 
 5. Run the model
 
    ```shell
-   ollama.exe run tiny_llama_ov:v1
+   ollama run tiny_llama_ov:v1
    ```
 
 ## CLI Reference
@@ -642,25 +646,25 @@ Let's take [OpenVINO/TinyLlama-1.1B-Chat-v1.0-int4-ov](https://huggingface.co/Op
 ### Show model information
 
 ```shell
-ollama.exe show tiny_llama_ov
+ollama show tiny_llama_ov
 ```
 
-##3 List models on your computer
+### List models on your computer
 
 ```shell
-ollama.exe list
+ollama list
 ```
 
 ### List which models are currently loaded
 
 ```shell
-ollama.exe ps
+ollama ps
 ```
 
 ### Stop a model which is currently running
 
 ```shell
-ollama.exe stop tiny_llama_ov:v1
+ollama stop tiny_llama_ov:v1
 ```
 
 ### Start Ollama
@@ -672,7 +676,9 @@ ollama.exe stop tiny_llama_ov:v1
 Install prerequisites:
 
 - [Go](https://go.dev/doc/install)
-- C/C++ Compiler e.g. Clang on macOS, [TDM-GCC](https://github.com/jmeubank/tdm-gcc/releases/latest) (Windows amd64) or [llvm-mingw](https://github.com/mstorsjo/llvm-mingw) (Windows arm64).
+- C/C++ Compiler e.g. Clang on macOS, [TDM-GCC](https://github.com/jmeubank/tdm-gcc/releases/latest) (Windows amd64) or [llvm-mingw](https://github.com/mstorsjo/llvm-mingw) (Windows arm64), GCC/Clang on Linux.
+
+Then build and run Ollama from the root directory of the repository:
 
 ### Windows
 
@@ -706,26 +712,61 @@ Install prerequisites:
    go build -o ollama.exe
    ```
 
-6. If you don't want to recompile ollama, you can choose to directly use the compiled executable file, and then initialize the genai environment in step 2 to run ollama directly. The compiled executable file is placed in the dist directory.
+6. If you don't want to recompile ollama, you can choose to directly use the compiled executable file, and then initialize the genai environment in `step 3` to run ollama directly. The compiled executable file is placed in the `dist` directory: [ollama](dist/windows/ollama.exe).
    
    But if you encounter the error when executing ollama.exe, it is recommended that you recompile from source code.
    ```shell
    This version of ollama.exe is not compatible with the version of Windows you're running. Check your computer's system information and then contact the software publisher.'
    ```
-    
+
+### Linux
+1. clone repo
+   ```shell
+   git lfs install
+   git lfs clone https://github.com/zhaohb/ollama_ov.git
+   ```
+
+2. Enable CGO:
+   ```shell
+   go env -w CGO_ENABLED=1
+   ```
+
+3. Initialize the GenAI environment
+
+   Download GenAI runtime from [GenAI](https://storage.openvinotoolkit.org/repositories/openvino_genai/packages/nightly/2025.1.0.0.dev20250308/openvino_genai_ubuntu22_2025.1.0.0.dev20250308_x86_64.tar.gz), then extract it to a directory openvino_genai_ubuntu22_2025.1.0.0.dev20250308_x86_64.
+   ```shell
+   cd openvino_genai_ubuntu22_2025.1.0.0.dev20250308_x86_64
+   source setupvars.sh
+   ```
+  
+4. Setting cgo environment variables
+   ```shell
+   export CGO_LDFLAGS=-L$OpenVINO_DIR/../lib/intel64/
+   export CGO_CFLAGS=-I$OpenVINO_DIR/../include
+   ```
+
+5. building Ollama
+   ```shell
+   go build -o ollama
+   ```
+
+6. If you don't want to recompile ollama, you can choose to directly use the compiled executable file, and then initialize the genai environment in `step 3` to run ollama directly. The compiled executable file is placed in the `dist` directory: [ollama](dist/linux/ollama).
+
+   If you encounter problems during use, it is recommended to rebuild from source.
+
 
 ### Running local builds
 
 Next, start the server:
 
 ```shell
-ollama.exe serve
+ollama serve
 ```
 
 Finally, in a separate shell, run a model:
 
 ```shell
-ollama.exe run tiny_llama_ov:v1
+ollama run tiny_llama_ov:v1
 ```
 
 ## Future Development Plan

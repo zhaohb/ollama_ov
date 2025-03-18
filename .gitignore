@@ -4,7 +4,6 @@
 .venv
 .swp
 build
-ollama
 .cache
 .idea
 test_data
