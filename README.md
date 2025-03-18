@@ -702,9 +702,9 @@ Then build and run Ollama from the root directory of the repository:
 
 3. Initialize the GenAI environment
 
-   Download GenAI runtime from [GenAI](https://storage.openvinotoolkit.org/repositories/openvino_genai/packages/nightly/2025.1.0.0.dev20250308/openvino_genai_windows_2025.1.0.0.dev20250308_x86_64.zip), then extract it to a directory openvino_genai_windows_2025.1.0.0.dev20250308_x86_64.
+   Download GenAI runtime from [GenAI](https://storage.openvinotoolkit.org/repositories/openvino_genai/packages/pre-release/2025.1.0.0rc1/openvino_genai_windows_2025.1.0.0rc1_x86_64.zip), then extract it to a directory openvino_genai_windows_2025.1.0.0rc1_x86_64.
    ```shell
-   cd openvino_genai_windows_2025.1.0.0.dev20250308_x86_64 
+   cd openvino_genai_windows_2025.1.0.0rc1_x86_64
    setupvars.bat
    ```
   
@@ -740,9 +740,9 @@ Then build and run Ollama from the root directory of the repository:
 
 3. Initialize the GenAI environment
 
-   Download GenAI runtime from [GenAI](https://storage.openvinotoolkit.org/repositories/openvino_genai/packages/nightly/2025.1.0.0.dev20250308/openvino_genai_ubuntu22_2025.1.0.0.dev20250308_x86_64.tar.gz), then extract it to a directory openvino_genai_ubuntu22_2025.1.0.0.dev20250308_x86_64.
+   Download GenAI runtime from [GenAI](https://storage.openvinotoolkit.org/repositories/openvino_genai/packages/pre-release/2025.1.0.0rc1/openvino_genai_ubuntu22_2025.1.0.0rc1_x86_64.tar.gz), then extract it to a directory openvino_genai_ubuntu22_2025.1.0.0rc1_x86_64.dev20250308_x86_64.
    ```shell
-   cd openvino_genai_ubuntu22_2025.1.0.0.dev20250308_x86_64
+   cd openvino_genai_ubuntu22_2025.1.0.0rc1_x86_64 
    source setupvars.sh
    ```
   
