@@ -159,7 +159,7 @@ func SetSamplingParams(samplingparameters *SamplingParams) *C.ov_genai_generatio
 	C.ov_genai_generation_config_set_top_k(cConfig, C.size_t(samplingparameters.TopK))
 
 	if samplingparameters.StopIds != nil {
-		cStopArray := C.malloc(C.size_t(len(samplingparameters.StopIds)) * C.size_t(unsafe.Sizeof(C.longlong(0))))
+		cStopArray := C.malloc(C.size_t(len(samplingparameters.StopIds)) * C.size_t(unsafe.Sizeof(C.int64_t(0))))
 		defer C.free(cStopArray)
 
 		var stopArray []int64
@@ -170,9 +170,9 @@ func SetSamplingParams(samplingparameters *SamplingParams) *C.ov_genai_generatio
 		}
 
 		for i, v := range stopArray {
-			*(*C.longlong)(unsafe.Pointer(uintptr(cStopArray) + uintptr(i)*unsafe.Sizeof(C.longlong(0)))) = C.longlong(v)
+			*(*C.int64_t)(unsafe.Pointer(uintptr(cStopArray) + uintptr(i)*unsafe.Sizeof(C.int64_t(0)))) = C.int64_t(v)
 		}
-		C.ov_genai_generation_config_set_stop_token_ids(cConfig, (*C.longlong)(cStopArray), C.size_t(len(stopArray)))
+		C.ov_genai_generation_config_set_stop_token_ids(cConfig, (*C.int64_t)(cStopArray), C.size_t(len(stopArray)))
 	}
 
 	// C.ov_genai_generation_config_set_repetition_penalty(cConfig, C.float(samplingparameters.RepeatPenalty))
