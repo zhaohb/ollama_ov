@@ -598,9 +598,9 @@ The native Ollama only supports models in the GGUF format, the Ollama-OV invoke 
 | DeepSeek-R1-Distill-llama-8B-int4-ov      | 8B      | 4.5GB | INT4_SYM_128 | [ModelScope](https://modelscope.cn/models/zhaohb/DeepSeek-R1-Distill-Llama-8B-int4-ov)    | CPU, GPU, NPU(base) |
 | DeepSeek-R1-Distill-llama-8B-int4-ov-npu  | 8B      | 4.2GB | INT4_SYM_CW  | [ModelScope](https://modelscope.cn/models/zhaohb/DeepSeek-R1-Distill-Llama-8B-int4-ov-npu)    | NPU(best) |
 | llama-3.2-1b-instruct-int4-ov             | 1B      |       | INT4_SYM_128 | [ModelScope]()    | CPU, GPU, NPU(base) |
-| llama-3.2-1b-instruct-int4-ov             | 1B      |       | INT4_SYM_CW  | [ModelScope]()    | NPU(best) |
-| llama-3.2-3b-instruct-int4-ov             | 3B      |       | INT4_SYM_128 | [ModelScope]()    | CPU, GPU, NPU(base) |
-| llama-3.2-3b-instruct-int4-ov             | 3B      |       | INT4_SYM_CW | [ModelScope]()    | NPU(best) |
+| llama-3.2-1b-instruct-int4-ov-npu         | 1B      |       | INT4_SYM_CW  | [ModelScope]()    | NPU(best) |
+| llama-3.2-3b-instruct-int4-ov             | 3B      | 1.9GB | INT4_SYM_128 | [ModelScope](https://modelscope.cn/models/FionaZhao/llama-3.2-3b-instruct-int4-ov/files)    | CPU, GPU, NPU(base) |
+| llama-3.2-3b-instruct-int4-ov-npu         | 3B      | 1.8GB  | INT4_SYM_CW | [ModelScope](https://modelscope.cn/models/FionaZhao/llama-3.2-3b-instruct-int4-ov-npu/files)    | NPU(best) |
 | Phi-3.5-mini-instruct-int4-ov             | 3.8B    | 2.1GB | INT4_ASYM    | [HF](https://hf-mirror.com/OpenVINO/Phi-3.5-mini-instruct-int4-ov/tree/main), [ModelScope](https://modelscope.cn/models/OpenVINO/Phi-3.5-mini-instruct-int4-ov)        | CPU, GPU |
 | Phi-3-mini-128k-instruct-int4-ov          | 3.8B    | 2.5GB | INT4_ASYM    | [HF](https://hf-mirror.com/OpenVINO/Phi-3-mini-128k-instruct-int4-ov), [ModelScope](https://modelscope.cn/models/OpenVINO/Phi-3-mini-128k-instruct-int4-ov)     | CPU, GPU |
 | Phi-3-mini-4k-instruct-int4-ov            | 3.8B    | 2.2GB | INT4_ASYM    | [HF](https://hf-mirror.com/OpenVINO/Phi-3-mini-4k-instruct-int4-ov), [ModelScope](https://modelscope.cn/models/OpenVINO/Phi-3-mini-4k-instruct-int4-ov)       | CPU, GPU |
