@@ -589,21 +589,37 @@ Getting started with large language models and using the [GenAI](https://github.
 
 ## Model library
 The native Ollama only supports models in the GGUF format, the Ollama-OV invoke OpenVINO GenAI which requires models in the OpenVINO format. Therefore, we have enabled support for OpenVINO model files in Ollama. For public LLMs, you can access and download OpenVINO IR model from HuggingFace or ModelScope:
-| Model              | Parameters | Size  | Download                         |
-| ------------------ | ---------- | ----- | -------------------------------- |
-| DeepSeek-R1-Distill-Qwen-1.5B-int4-ov     | 1.5B    | 1.1GB | [HF](), [ModelScope]()         |
-| DeepSeek-R1-Distill-Qwen-7B-int4-ov       | 7B      | 4.3GB | [HF](), [ModelScope]()         |
-| DeepSeek-R1-Distill-Qwen-14B-int4-ov      | 8B      | 4.5GB | [HF](), [ModelScope]()         |
-| Phi-3.5-mini-instruct-int4-ov             | 3.8B    | 2.1GB | [HF](https://hf-mirror.com/OpenVINO/Phi-3.5-mini-instruct-int4-ov/tree/main), [ModelScope](https://modelscope.cn/models/OpenVINO/Phi-3.5-mini-instruct-int4-ov)                  |
-| Phi-3-mini-128k-instruct-int4-ov          | 3.8B    | 2.5GB | [HF](https://hf-mirror.com/OpenVINO/Phi-3-mini-128k-instruct-int4-ov), [ModelScope](https://modelscope.cn/models/OpenVINO/Phi-3-mini-128k-instruct-int4-ov)               |
-| Phi-3-mini-4k-instruct-int4-ov            | 3.8B    | 2.2GB | [HF](https://hf-mirror.com/OpenVINO/Phi-3-mini-4k-instruct-int4-ov), [ModelScope](https://modelscope.cn/models/OpenVINO/Phi-3-mini-4k-instruct-int4-ov)                 |
-| Phi-3-medium-4k-instruct-int4-ov          | 14B     | 7.4GB | [HF](https://hf-mirror.com/OpenVINO/Phi-3-medium-4k-instruct-int4-ov), [ModelScope](https://modelscope.cn/models/OpenVINO/Phi-3-medium-4k-instruct-int4-ov)               |
-| Qwen2.5-0.5B-Instruct-openvino-ovms-int4  | 0.5B    | 0.3GB  | [ModelScope](https://modelscope.cn/models/kafufa/Qwen2.5-0.5B-Instruct-openvino-ovms-int4/summary) |
-| Qwen2.5-1.5B-Instruct-openvino-ovms-int4  | 1.5B    | 0.9GB  | [ModelScope](https://modelscope.cn/models/kafufa/Qwen2.5-1.5B-Instruct-openvino-ovms-int4/summary) |
-| gemma-2-9b-it-int4-ov                     | 9B      | 5.3GB  | [HF](https://hf-mirror.com/OpenVINO/gemma-2-9b-it-int4-ov), [ModelScope](https://modelscope.cn/models/OpenVINO/gemma-2-9b-it-int4-ov/summary) |
-| TinyLlama-1.1B-Chat-v1.0-int4-ov          | 1.1B         | 0.6GB | [HF](https://hf-mirror.com/OpenVINO/TinyLlama-1.1B-Chat-v1.0-int4-ov), [ModelScope](https://modelscope.cn/models/OpenVINO/TinyLlama-1.1B-Chat-v1.0-int4-ov)            |
+| Model              | Parameters | Size  |Compression | Download                         | Device   |
+| ------------------ | ---------- | ----- | -----------|-------------------- |----------|
+| DeepSeek-R1-Distill-Qwen-1.5B-int4-ov     | 1.5B    | 1.1GB | INT4_SYM_128 | [ModelScope]()    | CPU, GPU, NPU(base) |
+| DeepSeek-R1-Distill-Qwen-1.5B-int4-ov     | 1.5B    |       | INT4_SYM_CW  | [ModelScope]()    | NPU(best) |
+| DeepSeek-R1-Distill-Qwen-7B-int4-ov       | 7B      | 4.3GB | INT4_SYM_128 | [ModelScope]()    | CPU, GPU, NPU(base) |
+| DeepSeek-R1-Distill-Qwen-7B-int4-ov       | 7B      |       | INT4_SYM_CW  | [ModelScope]()    | NPU(best) |
+| DeepSeek-R1-Distill-llama-8B-int4-ov      | 8B      | 4.5GB | INT4_SYM_128 | [ModelScope]()    | CPU, GPU, NPU(base) |
+| DeepSeek-R1-Distill-llama-8B-int4-ov      | 8B      |       | INT4_SYM_CW  | [ModelScope]()    | NPU(best) |
+| llama-3.2-1b-instruct-int4-ov             | 1B      |       | INT4_SYM_128 | [ModelScope]()    | CPU, GPU, NPU(base) |
+| llama-3.2-1b-instruct-int4-ov             | 1B      |       | INT4_SYM_CW  | [ModelScope]()    | NPU(best) |
+| llama-3.2-3b-instruct-int4-ov             | 3B      |       | INT4_SYM_128 | [ModelScope]()    | CPU, GPU, NPU(base) |
+| llama-3.2-3b-instruct-int4-ov             | 3B      |       | INT4_SYM_CW | [ModelScope]()    | NPU(best) |
+| Phi-3.5-mini-instruct-int4-ov             | 3.8B    | 2.1GB | INT4_ASYM    | [HF](https://hf-mirror.com/OpenVINO/Phi-3.5-mini-instruct-int4-ov/tree/main), [ModelScope](https://modelscope.cn/models/OpenVINO/Phi-3.5-mini-instruct-int4-ov)        | CPU, GPU |
+| Phi-3-mini-128k-instruct-int4-ov          | 3.8B    | 2.5GB | INT4_ASYM    | [HF](https://hf-mirror.com/OpenVINO/Phi-3-mini-128k-instruct-int4-ov), [ModelScope](https://modelscope.cn/models/OpenVINO/Phi-3-mini-128k-instruct-int4-ov)     | CPU, GPU |
+| Phi-3-mini-4k-instruct-int4-ov            | 3.8B    | 2.2GB | INT4_ASYM    | [HF](https://hf-mirror.com/OpenVINO/Phi-3-mini-4k-instruct-int4-ov), [ModelScope](https://modelscope.cn/models/OpenVINO/Phi-3-mini-4k-instruct-int4-ov)       | CPU, GPU |
+| Phi-3-medium-4k-instruct-int4-ov          | 14B     | 7.4GB | INT4_ASYM    | [HF](https://hf-mirror.com/OpenVINO/Phi-3-medium-4k-instruct-int4-ov), [ModelScope](https://modelscope.cn/models/OpenVINO/Phi-3-medium-4k-instruct-int4-ov)     | CPU, GPU |
+| Qwen2.5-0.5B-Instruct-openvino-ovms-int4  | 0.5B    | 0.3GB | INT4_SYM_128 | [ModelScope](https://modelscope.cn/models/kafufa/Qwen2.5-0.5B-Instruct-openvino-ovms-int4/summary) | CPU, GPU, NPU(base) |
+| Qwen2.5-1.5B-Instruct-openvino-ovms-int4  | 1.5B    | 0.9GB | INT4_SYM_128 | [ModelScope](https://modelscope.cn/models/kafufa/Qwen2.5-1.5B-Instruct-openvino-ovms-int4/summary) | CPU, GPU, NPU(base) |
+| Qwen2.5-7B-Instruct-int4-ov               | 7B      |       | INT4_ASYM    | [ModelScope]() | CPU, GPU |
+| gemma-2-9b-it-int4-ov                     | 9B      | 5.3GB | INT4_ASYM    | [HF](https://hf-mirror.com/OpenVINO/gemma-2-9b-it-int4-ov), [ModelScope](https://modelscope.cn/models/OpenVINO/gemma-2-9b-it-int4-ov/summary) | CPU, GPU |
+| gemma-3-1b-int4-ov                        | 1B      |       | INT4_SYM_128 | [ModelScope]() | CPU, GPU |
+| gemma-3-4b-int4-ov                        | 4B      |       | INT4_SYM_128 | [ModelScope]() | CPU, GPU |
+| TinyLlama-1.1B-Chat-v1.0-int4-ov          | 1.1B    | 0.6GB | INT4_ASYM    | [HF](https://hf-mirror.com/OpenVINO/TinyLlama-1.1B-Chat-v1.0-int4-ov), [ModelScope](https://modelscope.cn/models/OpenVINO/TinyLlama-1.1B-Chat-v1.0-int4-ov)     | CPU, GPU |
 
-Just provide above model link as example, for other LLMs, you can check OpenVINO GenAI model support list. If you have customized LLM, please follow [model conversion step of GenAI](https://github.com/openvinotoolkit/openvino.genai?tab=readme-ov-file#converting-and-compressing-text-generation-model-from-hugging-face-library). 
+* INT4_SYM_128: INT4 symmetric compression with NNCF, group size 128, all linear layer compressed.
+* INT4_SYM_CW: INT4 symmetric compression with NNCF, channel wise compression.
+* INT4_ASYM: INT4 asymmetric compression with NNCF, NPU not support ASYM compression.
+
+Just provide above model link as example for part models, for other LLMs, you can check [OpenVINO GenAI model support list](https://github.com/openvinotoolkit/openvino.genai/blob/master/SUPPORTED_MODELS.md). If you have customized LLM, please follow [model conversion step of GenAI](https://github.com/openvinotoolkit/openvino.genai?tab=readme-ov-file#converting-and-compressing-text-generation-model-from-hugging-face-library). 
+
+
 
 ## Ollama Model File
 We added two new parameters to Modelfile based on the original parameters:
