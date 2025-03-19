@@ -609,6 +609,7 @@ The native Ollama only supports models in the GGUF format, the Ollama-OV invoke 
 | Qwen2.5-1.5B-Instruct-openvino-ovms-int4  | 1.5B    | 0.9GB | INT4_SYM_128 | [ModelScope](https://modelscope.cn/models/kafufa/Qwen2.5-1.5B-Instruct-openvino-ovms-int4/summary) | CPU, GPU, NPU(base) |
 | Qwen2.5-3B-Instruct-gptq-ov               | 3B      | 2.7GB | GPTQ_INT4    | [ModelScope](https://modelscope.cn/models/FionaZhao/Qwen2.5-3B-Instruct-gptq-ov/files) | CPU, GPU |
 | Qwen2.5-7B-Instruct-int4-ov               | 7B      | 4.3GB | INT4_ASYM    | [ModelScope](https://modelscope.cn/models/FionaZhao/Qwen2.5-7B-Instruct-int4-ov/files) | CPU, GPU |
+| minicpm-1b-sft-int4-ov                    | 1B      | 0.7GB | INT4_SYM     | [ModelScope](https://modelscope.cn/models/FionaZhao/minicpm-1b-sft-int4-ov/files) | CPU, GPU, NPU(base) |
 | gemma-2-9b-it-int4-ov                     | 9B      | 5.3GB | INT4_ASYM    | [HF](https://hf-mirror.com/OpenVINO/gemma-2-9b-it-int4-ov), [ModelScope](https://modelscope.cn/models/OpenVINO/gemma-2-9b-it-int4-ov/summary) | CPU, GPU |
 | gemma-3-1b-int4-ov                        | 1B      |       | INT4_SYM_128 | [ModelScope]() | CPU, GPU |
 | gemma-3-4b-int4-ov                        | 4B      |       | INT4_SYM_128 | [ModelScope]() | CPU, GPU |
