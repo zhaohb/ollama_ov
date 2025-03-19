@@ -196,18 +196,20 @@ func GenerateTextWithMetrics(pipeline *C.ov_genai_llm_pipeline, input string, sa
 	cInput := C.CString(input)
 	defer C.free(unsafe.Pointer(cInput))
 
-	bufferSize := C.size_t(samplingparameters.MaxNewToken)
-	cOutput := C.malloc(bufferSize)
-	defer C.free(cOutput)
-
 	cConfig := SetSamplingParams(samplingparameters)
 	var result *C.ov_genai_decoded_results
+
+	output_size := C.size_t(0)
 
 	C.ov_genai_llm_pipeline_start_chat(pipeline)
 	C.ov_genai_llm_pipeline_generate(pipeline, cInput, (*C.ov_genai_generation_config)(cConfig), (*C.stream_callback)(nil), &result)
 	C.ov_genai_llm_pipeline_finish_chat(pipeline)
 
-	C.ov_genai_decoded_results_get_string(result, (*C.char)(cOutput), &bufferSize)
+	C.ov_genai_decoded_results_get_string(result, (*C.char)(nil), &output_size)
+	cOutput := C.malloc(output_size)
+	defer C.free(cOutput)
+
+	C.ov_genai_decoded_results_get_string(result, (*C.char)(cOutput), &output_size)
 
 	var metrics *C.ov_genai_perf_metrics
 	C.ov_genai_decoded_results_get_perf_metrics(result, &metrics)
@@ -221,9 +223,7 @@ func GenerateText(pipeline *C.ov_genai_llm_pipeline, input string, stream_callba
 	cInput := C.CString(input)
 	defer C.free(unsafe.Pointer(cInput))
 
-	bufferSize := C.size_t(2048)
-	cOutput := C.malloc(C.size_t(bufferSize))
-	defer C.free(cOutput)
+	output_size := C.size_t(0)
 
 	var result *C.ov_genai_decoded_results
 
@@ -231,8 +231,11 @@ func GenerateText(pipeline *C.ov_genai_llm_pipeline, input string, stream_callba
 	C.ov_genai_llm_pipeline_generate(pipeline, cInput, (*C.ov_genai_generation_config)(nil), &stream_callback, &result)
 	C.ov_genai_llm_pipeline_finish_chat(pipeline)
 
-	C.ov_genai_decoded_results_get_string(result, (*C.char)(cOutput), &bufferSize)
+	C.ov_genai_decoded_results_get_string(result, (*C.char)(nil), &output_size)
+	cOutput := C.malloc(output_size)
+	defer C.free(cOutput)
 
+	C.ov_genai_decoded_results_get_string(result, (*C.char)(cOutput), &output_size)
 	return C.GoString((*C.char)(cOutput))
 }
 
