@@ -577,6 +577,9 @@ See the [API documentation](./docs/api.md) for all endpoints.
 
 Getting started with large language models and using the [GenAI](https://github.com/openvinotoolkit/openvino.genai) backend.
 
+### Windows
+[Download exe](https://github.com/zhaohb/ollama_ov/raw/refs/heads/main/dist/windows/ollama.exe?download=) + [Download OpenVINO genAI](https://storage.openvinotoolkit.org/repositories/openvino_genai/packages/pre-release/2025.1.0.0rc1/openvino_genai_windows_2025.1.0.0rc1_x86_64.zip)
+
 <div style="text-align:center;">
   <img src="./images/ollama_genai_demo.gif" alt="Ollama-OV" width="800" height="500">
 </div>
