@@ -591,12 +591,12 @@ Getting started with large language models and using the [GenAI](https://github.
 The native Ollama only supports models in the GGUF format, the Ollama-OV invoke OpenVINO GenAI which requires models in the OpenVINO format. Therefore, we have enabled support for OpenVINO model files in Ollama. For public LLMs, you can access and download OpenVINO IR model from HuggingFace or ModelScope:
 | Model              | Parameters | Size  |Compression | Download                         | Device   |
 | ------------------ | ---------- | ----- | -----------|-------------------- |----------|
-| DeepSeek-R1-Distill-Qwen-1.5B-int4-ov     | 1.5B    | 1.1GB | INT4_SYM_128 | [ModelScope]()    | CPU, GPU, NPU(base) |
-| DeepSeek-R1-Distill-Qwen-1.5B-int4-ov     | 1.5B    |       | INT4_SYM_CW  | [ModelScope]()    | NPU(best) |
-| DeepSeek-R1-Distill-Qwen-7B-int4-ov       | 7B      | 4.3GB | INT4_SYM_128 | [ModelScope]()    | CPU, GPU, NPU(base) |
-| DeepSeek-R1-Distill-Qwen-7B-int4-ov       | 7B      |       | INT4_SYM_CW  | [ModelScope]()    | NPU(best) |
-| DeepSeek-R1-Distill-llama-8B-int4-ov      | 8B      | 4.5GB | INT4_SYM_128 | [ModelScope]()    | CPU, GPU, NPU(base) |
-| DeepSeek-R1-Distill-llama-8B-int4-ov      | 8B      |       | INT4_SYM_CW  | [ModelScope]()    | NPU(best) |
+| DeepSeek-R1-Distill-Qwen-1.5B-int4-ov     | 1.5B    | 1.1GB | INT4_SYM_128 | [ModelScope](https://modelscope.cn/models/zhaohb/DeepSeek-R1-Distill-Qwen-1.5B-int4-ov/summary)    | CPU, GPU, NPU(base) |
+| DeepSeek-R1-Distill-Qwen-1.5B-int4-ov-npu | 1.5B    | 1.1GB | INT4_SYM_CW  | [ModelScope](https://modelscope.cn/models/zhaohb/DeepSeek-R1-Distill-Qwen-1.5B-int4-ov-npu/summary)    | NPU(best) |
+| DeepSeek-R1-Distill-Qwen-7B-int4-ov       | 7B      | 4.3GB | INT4_SYM_128 | [ModelScope](https://modelscope.cn/models/zhaohb/DeepSeek-R1-Distill-Qwen-7B-int4-ov)    | CPU, GPU, NPU(base) |
+| DeepSeek-R1-Distill-Qwen-7B-int4-ov-npu   | 7B      | 4.1GB | INT4_SYM_CW  | [ModelScope](https://modelscope.cn/models/zhaohb/DeepSeek-R1-Distill-Qwen-7B-int4-ov-npu)    | NPU(best) |
+| DeepSeek-R1-Distill-llama-8B-int4-ov      | 8B      | 4.5GB | INT4_SYM_128 | [ModelScope](https://modelscope.cn/models/zhaohb/DeepSeek-R1-Distill-Llama-8B-int4-ov)    | CPU, GPU, NPU(base) |
+| DeepSeek-R1-Distill-llama-8B-int4-ov-npu  | 8B      | 4.2GB | INT4_SYM_CW  | [ModelScope](https://modelscope.cn/models/zhaohb/DeepSeek-R1-Distill-Llama-8B-int4-ov-npu)    | NPU(best) |
 | llama-3.2-1b-instruct-int4-ov             | 1B      |       | INT4_SYM_128 | [ModelScope]()    | CPU, GPU, NPU(base) |
 | llama-3.2-1b-instruct-int4-ov             | 1B      |       | INT4_SYM_CW  | [ModelScope]()    | NPU(best) |
 | llama-3.2-3b-instruct-int4-ov             | 3B      |       | INT4_SYM_128 | [ModelScope]()    | CPU, GPU, NPU(base) |
