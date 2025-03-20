@@ -640,10 +640,16 @@ How to create an Ollama model based on Openvino IR
 </div>
 
 #### Example
-Let's take [OpenVINO/TinyLlama-1.1B-Chat-v1.0-int4-ov](https://huggingface.co/OpenVINO/TinyLlama-1.1B-Chat-v1.0-int4-ov) as an example.
+Let's take [deepseek-ai/DeepSeek-R1-Distill-Qwen-7B](https://hf-mirror.com/deepseek-ai/DeepSeek-R1-Distill-Qwen-7B) as an example.
 
 1. Download the OpenVINO model 
-   1. Download from HF:  [OpenVINO/TinyLlama-1.1B-Chat-v1.0-int4-ov](https://huggingface.co/OpenVINO/TinyLlama-1.1B-Chat-v1.0-int4-ov)
+   1. Download from ModelScope: [DeepSeek-R1-Distill-Qwen-7B-int4-ov](https://modelscope.cn/models/zhaohb/DeepSeek-R1-Distill-Qwen-7B-int4-ov)
+      ```shell
+      pip install modelscope
+      modelscope download --model zhaohb/DeepSeek-R1-Distill-Qwen-7B-int4-ov --local_dir ./DeepSeek-R1-Distill-Qwen-7B-int4-ov
+      ```
+   
+   2. If the OpenVINO model exists in HF, we can also download it from HF. Here we take [TinyLlama-1.1B-Chat-v1.0-int4-ov](https://huggingface.co/OpenVINO/TinyLlama-1.1B-Chat-v1.0-int4-ov) as an example to introduce how to download the model from HF.
 
       If your network access to HuggingFace is unstable, you can try to use a proxy image to pull the model.
       ```shell
@@ -654,44 +660,37 @@ Let's take [OpenVINO/TinyLlama-1.1B-Chat-v1.0-int4-ov](https://huggingface.co/Op
       huggingface-cli download --resume-download OpenVINO/TinyLlama-1.1B-Chat-v1.0-int4-ov  --local-dir  TinyLlama-1.1B-Chat-v1.0-int4-ov --local-dir-use-symlinks False
       ```
 
-   2. Download from ModelScope: [OpenVINO/TinyLlama-1.1B-Chat-v1.0-int4-ov](https://modelscope.cn/models/OpenVINO/TinyLlama-1.1B-Chat-v1.0-int4-ov/files)
-      ```shell
-      pip install modelscope
-      modelscope download --model OpenVINO/TinyLlama-1.1B-Chat-v1.0-int4-ov --local_dir ./TinyLlama-1.1B-Chat-v1.0-int4-ov
-      ```
 
 2. Package OpenVINO IR into a tar.gz file
     ```bash
-    tar -zcvf TinyLlama-1.1B-Chat-v1.0-int4-ov.tar.gz TinyLlama-1.1B-Chat-v1.0-int4-ov
+    tar -zcvf DeepSeek-R1-Distill-Qwen-7B-int4-ov.tar.gz DeepSeek-R1-Distill-Qwen-7B-int4-ov
     ```
-3. Create a file named `Modelfile`, with a `FROM` instruction with the local filepath to the model you want to import.
 
-   ```
-   FROM TinyLlama-1.1B-Chat-v1.0-int4-ov.tar.gz
-   ModelType "OpenVINO"
-   InferDevice "GPU"
-   ```
+3. Create a file named `Modelfile`, with a `FROM` instruction with the local filepath to the model you want to import.
+   For convenience, we have put the model file of DeepSeek-R1-Distill-Qwen-7B-int4-ov model under example dir: [Modelfile for DeepSeek](https://github.com/zhaohb/ollama_ov/blob/main/examples/modelfile/deepseek_r1_distill_qwen/Modelfile), we can use it directly.
+
    Note:
 
-   1. The ModelType "OpenVINO" parameter is mandatory and must be explicitly set.
-   2. The InferDevice parameter is optional. If not specified, the system will prioritize using the GPU by default. If no GPU is available, it will automatically fall back to using the CPU. If InferDevice is explicitly set, the system will strictly use the specified device. If the specified device is unavailable, the system will follow the same fallback strategy as when InferDevice is not set (i.e., GPU first, then CPU).
-   3. If you want to test the `DeepSeek` model with the openvino framework Modelfile requires some special settings, you can refer to [deepseek modelfile](./examples/modelfile/).
+   1. The `ModelType "OpenVINO"` parameter is mandatory and must be explicitly set.
+   2. The `InferDevice` parameter is optional. If not specified, the system will prioritize using the GPU by default. If no GPU is available, it will automatically fall back to using the CPU. If InferDevice is explicitly set, the system will strictly use the specified device. If the specified device is unavailable, the system will follow the same fallback strategy as when InferDevice is not set (i.e., GPU first, then CPU).
+   3. For more information on working with a Modelfile, see the [Modelfile](./docs/modelfile.md) documentation.
       
 4. Unzip OpenVINO GenAI package and set environment
    ```shell
    cd openvino_genai_windows_2025.1.0.0rc1_x86_64
    setupvars.bat
    ```
-6. Create the model in Ollama
+
+5. Create the model in Ollama
 
    ```shell
-   ollama create tiny_llama_ov:v1 -f Modelfile
+   ollama create DeepSeek-R1-Distill-Qwen-7B-int4-ov:v1 -f Modelfile
    ```
 
-7. Run the model
+6. Run the model
 
    ```shell
-   ollama run tiny_llama_ov:v1
+   ollama run DeepSeek-R1-Distill-Qwen-7B-int4-ov:v1
    ```
 
 ## CLI Reference
@@ -699,7 +698,7 @@ Let's take [OpenVINO/TinyLlama-1.1B-Chat-v1.0-int4-ov](https://huggingface.co/Op
 ### Show model information
 
 ```shell
-ollama show tiny_llama_ov
+ollama show DeepSeek-R1-Distill-Qwen-7B-int4-ov:v1 
 ```
 
 ### List models on your computer
@@ -717,7 +716,7 @@ ollama ps
 ### Stop a model which is currently running
 
 ```shell
-ollama stop tiny_llama_ov:v1
+ollama stop DeepSeek-R1-Distill-Qwen-7B-int4-ov:v1 
 ```
 
 ### Start Ollama
@@ -819,7 +818,7 @@ ollama serve
 Finally, in a separate shell, run a model:
 
 ```shell
-ollama run tiny_llama_ov:v1
+ollama run DeepSeek-R1-Distill-Qwen-7B-int4-ov:v1 
 ```
 
 ## Future Development Plan
