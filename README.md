@@ -675,6 +675,7 @@ Let's take [OpenVINO/TinyLlama-1.1B-Chat-v1.0-int4-ov](https://huggingface.co/Op
 
    1. The ModelType "OpenVINO" parameter is mandatory and must be explicitly set.
    2. The InferDevice parameter is optional. If not specified, the system will prioritize using the GPU by default. If no GPU is available, it will automatically fall back to using the CPU. If InferDevice is explicitly set, the system will strictly use the specified device. If the specified device is unavailable, the system will follow the same fallback strategy as when InferDevice is not set (i.e., GPU first, then CPU).
+   3. If you want to test the `DeepSeek` model with the openvino framework Modelfile requires some special settings, you can refer to [deepseek modelfile](./examples/modelfile/).
       
 4. Unzip OpenVINO GenAI package and set environment
    ```shell
