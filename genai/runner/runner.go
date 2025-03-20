@@ -345,6 +345,7 @@ func (s *Server) completion(w http.ResponseWriter, r *http.Request) {
 	samplingParams.StopIds = req.StopId
 	samplingParams.StopString = req.Stop
 	samplingParams.RepeatLastN = req.RepeatLastN
+	samplingParams.RepeatPenalty = req.RepeatPenalty
 
 	seq, err := s.NewSequence(req.Prompt, req.Images, NewSequenceParams{
 		numPredict: req.NumPredict,

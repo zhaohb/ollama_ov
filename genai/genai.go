@@ -154,6 +154,12 @@ func SetSamplingParams(samplingparameters *SamplingParams) *C.ov_genai_generatio
 	var cConfig *C.ov_genai_generation_config
 	C.ov_genai_generation_config_create(&cConfig)
 
+	log.Printf("Sampling Parameters - Temperature: %.2f, TopP: %.2f, TopK: %d, RepeatPenalty: %.2f",
+		samplingparameters.Temp,
+		samplingparameters.TopP,
+		samplingparameters.TopK,
+		samplingparameters.RepeatPenalty)
+
 	C.ov_genai_generation_config_set_max_new_tokens(cConfig, C.size_t(samplingparameters.MaxNewToken))
 	C.ov_genai_generation_config_set_temperature(cConfig, C.float(samplingparameters.Temp))
 	C.ov_genai_generation_config_set_top_p(cConfig, C.float(samplingparameters.TopP))
@@ -176,7 +182,7 @@ func SetSamplingParams(samplingparameters *SamplingParams) *C.ov_genai_generatio
 		C.ov_genai_generation_config_set_stop_token_ids(cConfig, (*C.int64_t)(cStopArray), C.size_t(len(stopArray)))
 	}
 
-	// C.ov_genai_generation_config_set_repetition_penalty(cConfig, C.float(samplingparameters.RepeatPenalty))
+	C.ov_genai_generation_config_set_repetition_penalty(cConfig, C.float(samplingparameters.RepeatPenalty))
 
 	if samplingparameters.StopString != nil {
 		cStopStrings := C.malloc(C.size_t(len(samplingparameters.StopString)) * C.size_t(unsafe.Sizeof(uintptr(0))))
