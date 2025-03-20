@@ -611,8 +611,7 @@ The native Ollama only supports models in the GGUF format, the Ollama-OV invoke 
 | Qwen2.5-7B-Instruct-int4-ov               | 7B      | 4.3GB | INT4_ASYM    | [ModelScope](https://modelscope.cn/models/FionaZhao/Qwen2.5-7B-Instruct-int4-ov/files) | CPU, GPU |
 | minicpm-1b-sft-int4-ov                    | 1B      | 0.7GB | INT4_SYM     | [ModelScope](https://modelscope.cn/models/FionaZhao/minicpm-1b-sft-int4-ov/files) | CPU, GPU, NPU(base) |
 | gemma-2-9b-it-int4-ov                     | 9B      | 5.3GB | INT4_ASYM    | [HF](https://hf-mirror.com/OpenVINO/gemma-2-9b-it-int4-ov), [ModelScope](https://modelscope.cn/models/OpenVINO/gemma-2-9b-it-int4-ov/summary) | CPU, GPU |
-| gemma-3-1b-int4-ov                        | 1B      |       | INT4_SYM_128 | [ModelScope]() | CPU, GPU |
-| gemma-3-4b-int4-ov                        | 4B      |       | INT4_SYM_128 | [ModelScope]() | CPU, GPU |
+| gemma-3-1b-it-int4-ov                     | 1B      | 0.7G | INT4_SYM_128 | [ModelScope](https://modelscope.cn/models/zhaohb/gemma-3-1b-it-int4-ov/summary) | CPU, GPU |
 | TinyLlama-1.1B-Chat-v1.0-int4-ov          | 1.1B    | 0.6GB | INT4_ASYM    | [HF](https://hf-mirror.com/OpenVINO/TinyLlama-1.1B-Chat-v1.0-int4-ov), [ModelScope](https://modelscope.cn/models/OpenVINO/TinyLlama-1.1B-Chat-v1.0-int4-ov)     | CPU, GPU |
 
 * INT4_SYM_128: INT4 symmetric compression with NNCF, group size 128, all linear layer compressed.
