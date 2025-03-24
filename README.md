@@ -578,13 +578,13 @@ See the [API documentation](./docs/api.md) for all endpoints.
 Getting started with large language models and using the [GenAI](https://github.com/openvinotoolkit/openvino.genai) backend.
 
 ### Windows
-[Download exe](https://github.com/zhaohb/ollama_ov/raw/refs/heads/main/dist/windows/ollama.exe?download=) + [Download OpenVINO GenAI](https://storage.openvinotoolkit.org/repositories/openvino_genai/packages/pre-release/2025.1.0.0rc1/openvino_genai_windows_2025.1.0.0rc1_x86_64.zip)
+[Download exe](https://drive.google.com/file/d/1iizO9iLhSJGFUu6BgY3EwOchrCyzImUN/view?usp=drive_link) + [Download OpenVINO GenAI](https://storage.openvinotoolkit.org/repositories/openvino_genai/packages/pre-release/2025.1.0.0rc1/openvino_genai_windows_2025.1.0.0rc1_x86_64.zip)
 
 ### Linux(Ubuntu 22.04)
-[Download](https://github.com/zhaohb/ollama_ov/raw/refs/heads/main/dist/linux/ollama?download=) + [Donwload OpenVINO GenAI](https://storage.openvinotoolkit.org/repositories/openvino_genai/packages/pre-release/2025.1.0.0rc1/openvino_genai_ubuntu22_2025.1.0.0rc1_x86_64.tar.gz)
+[Download](https://drive.google.com/file/d/1HEyZNNCbWSidKNQl4MRsD8FuwEZtdyew/view?usp=drive_link) + [Donwload OpenVINO GenAI](https://storage.openvinotoolkit.org/repositories/openvino_genai/packages/pre-release/2025.1.0.0rc1/openvino_genai_ubuntu22_2025.1.0.0rc1_x86_64.tar.gz)
 
 <div style="text-align:center;">
-  <img src="./images/ollama_ov_math.gif" alt="Ollama-OV" width="800" height="500">
+  <img src="./images/ollama_genai_streaming_demo.gif" alt="Ollama-OV" width="900" height="500">
 </div>
 
 ## Model library
