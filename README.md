@@ -578,10 +578,10 @@ See the [API documentation](./docs/api.md) for all endpoints.
 Getting started with large language models and using the [GenAI](https://github.com/openvinotoolkit/openvino.genai) backend.
 
 ### Windows
-[Download exe](https://drive.google.com/file/d/1iizO9iLhSJGFUu6BgY3EwOchrCyzImUN/view?usp=drive_link) + [Download OpenVINO GenAI](https://storage.openvinotoolkit.org/repositories/openvino_genai/packages/pre-release/2025.1.0.0rc1/openvino_genai_windows_2025.1.0.0rc1_x86_64.zip)
+[Download exe](https://drive.google.com/file/d/1iizO9iLhSJGFUu6BgY3EwOchrCyzImUN/view?usp=drive_link) + [Download OpenVINO GenAI](https://storage.openvinotoolkit.org/repositories/openvino_genai/packages/nightly/2025.2.0.0.dev20250320/openvino_genai_windows_2025.2.0.0.dev20250320_x86_64.zip)
 
 ### Linux(Ubuntu 22.04)
-[Download](https://drive.google.com/file/d/1HEyZNNCbWSidKNQl4MRsD8FuwEZtdyew/view?usp=drive_link) + [Donwload OpenVINO GenAI](https://storage.openvinotoolkit.org/repositories/openvino_genai/packages/pre-release/2025.1.0.0rc1/openvino_genai_ubuntu22_2025.1.0.0rc1_x86_64.tar.gz)
+[Download](https://drive.google.com/file/d/1HEyZNNCbWSidKNQl4MRsD8FuwEZtdyew/view?usp=drive_link) + [Donwload OpenVINO GenAI](https://storage.openvinotoolkit.org/repositories/openvino_genai/packages/nightly/2025.2.0.0.dev20250320/openvino_genai_ubuntu22_2025.2.0.0.dev20250320_x86_64.tar.gz)
 
 <div style="text-align:center;">
   <img src="./images/ollama_ov_streaming.gif" alt="Ollama-OV" width="900" height="400">
@@ -691,7 +691,7 @@ Let's take [deepseek-ai/DeepSeek-R1-Distill-Qwen-7B](https://hf-mirror.com/deeps
    ollama create DeepSeek-R1-Distill-Qwen-7B-int4-ov:v1 -f Modelfile
    ```
 
-6. Run the model
+6. Run the model                     
 
    ```shell
    ollama run DeepSeek-R1-Distill-Qwen-7B-int4-ov:v1
@@ -725,7 +725,7 @@ ollama stop DeepSeek-R1-Distill-Qwen-7B-int4-ov:v1
 
 ### Start Ollama
 
-`ollama serve` is used when you want to start ollama without running the desktop application.
+Setting `GODEBUG=cgocheck=0`env and `ollama serve` is used when you want to start ollama without running the desktop application.
 
 ## Building from source
 
@@ -751,12 +751,10 @@ Then build and run Ollama from the root directory of the repository:
 
 3. Initialize the GenAI environment
 
-   Download GenAI runtime from [GenAI](https://storage.openvinotoolkit.org/repositories/openvino_genai/packages/pre-release/2025.1.0.0rc1/openvino_genai_windows_2025.1.0.0rc1_x86_64.zip), then extract it to a directory openvino_genai_windows_2025.1.0.0rc1_x86_64.
+   Download GenAI runtime from [GenAI](https://storage.openvinotoolkit.org/repositories/openvino_genai/packages/nightly/2025.2.0.0.dev20250320/openvino_genai_windows_2025.2.0.0.dev20250320_x86_64.zip), then extract it to a directory openvino_genai_windows_2025.2.0.0.dev20250320_x86_64 .
    ```shell
-   cd openvino_genai_windows_2025.1.0.0rc1_x86_64
+   cd openvino_genai_windows_2025.2.0.0.dev20250320_x86_64
    setupvars.bat
-
-   set GODEBUG=cgocheck=0
    ```
   
 4. Setting cgo environment variables
@@ -770,7 +768,7 @@ Then build and run Ollama from the root directory of the repository:
    go build -o ollama.exe
    ```
 
-6. If you don't want to recompile ollama, you can choose to directly use the compiled executable file, and then initialize the genai environment in `step 3` to run ollama directly. The compiled executable file is placed in the `dist` directory: [ollama](dist/windows/ollama.exe).
+6. If you don't want to recompile ollama, you can choose to directly use the compiled executable file, and then initialize the genai environment in `step 3` to run ollama directly [ollama](https://drive.google.com/file/d/1iizO9iLhSJGFUu6BgY3EwOchrCyzImUN/view?usp=drive_link).
    
    But if you encounter the error when executing ollama.exe, it is recommended that you recompile from source code.
    ```shell
@@ -791,12 +789,10 @@ Then build and run Ollama from the root directory of the repository:
 
 3. Initialize the GenAI environment
 
-   Download GenAI runtime from [GenAI](https://storage.openvinotoolkit.org/repositories/openvino_genai/packages/pre-release/2025.1.0.0rc1/openvino_genai_ubuntu22_2025.1.0.0rc1_x86_64.tar.gz), then extract it to a directory openvino_genai_ubuntu22_2025.1.0.0rc1_x86_64.dev20250308_x86_64.
+   Download GenAI runtime from [GenAI](https://storage.openvinotoolkit.org/repositories/openvino_genai/packages/nightly/2025.2.0.0.dev20250320/openvino_genai_ubuntu22_2025.2.0.0.dev20250320_x86_64.tar.gz), then extract it to a directory openvino_genai_ubuntu22_2025.2.0.0.dev20250320_x86_64.
    ```shell
-   cd openvino_genai_ubuntu22_2025.1.0.0rc1_x86_64 
+   cd openvino_genai_ubuntu22_2025.2.0.0.dev20250320_x86_64 
    source setupvars.sh
-
-   export GODEBUG=cgocheck=0
    ```
   
 4. Setting cgo environment variables
@@ -810,24 +806,36 @@ Then build and run Ollama from the root directory of the repository:
    go build -o ollama
    ```
 
-6. If you don't want to recompile ollama, you can choose to directly use the compiled executable file, and then initialize the genai environment in `step 3` to run ollama directly. The compiled executable file is placed in the `dist` directory: [ollama](dist/linux/ollama).
+6. If you don't want to recompile ollama, you can choose to directly use the compiled executable file, and then initialize the genai environment in `step 3` to run ollama directly [ollama](https://drive.google.com/file/d/1HEyZNNCbWSidKNQl4MRsD8FuwEZtdyew/view?usp=drive_link). 
 
    If you encounter problems during use, it is recommended to rebuild from source.
 
 
 ### Running local builds
 
-Next, start the server:
+1. First, set GODEGUG=cgocheck=0 env:
 
-```shell
-ollama serve
-```
+   #### Linux
+   ```shell
+   export GODEGUG=cgocheck=0
+   ```
 
-Finally, in a separate shell, run a model:
+   #### Windows 
+   ```shell
+   set GODEBUG=cgocheck=0
+   ```
 
-```shell
-ollama run DeepSeek-R1-Distill-Qwen-7B-int4-ov:v1 
-```
+2. Next, start the server:
+
+   ```shell
+   ollama serve
+   ```
+
+3. Finally, in a separate shell, run a model:
+
+   ```shell
+   ollama run DeepSeek-R1-Distill-Qwen-7B-int4-ov:v1 
+   ```
 
 ## Future Development Plan
 Here are some features and improvements planned for future releases:
