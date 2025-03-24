@@ -300,15 +300,11 @@ func GetOvVersion() {
 	defer C.ov_version_free(&ov_version)
 }
 
-type gen_result_struct struct {
-	pendingResponses []string
-}
-
 //export goCallbackBridge
 func goCallbackBridge(args *C.char, gen_result unsafe.Pointer) C.int {
 	if args != nil {
 		// 将 unsafe.Pointer 转换回结构体指针
-		result := (*gen_result_struct)(gen_result)
+		result := (*Sequence)(gen_result)
 
 		// 将 C 字符串转换为 Go 字符串并追加到切片中
 		goStr := C.GoString(args)
