@@ -831,7 +831,5 @@ ollama run DeepSeek-R1-Distill-Qwen-7B-int4-ov:v1
 
 ## Future Development Plan
 Here are some features and improvements planned for future releases:
-
-1. **streaming mode**: Support for streaming mode to improve the user experience and reduce latency.
    
-2. **Multimodal models**: Support for multimodal models that can process both text and image data.
+1. **Multimodal models**: Support for multimodal models that can process both text and image data.
