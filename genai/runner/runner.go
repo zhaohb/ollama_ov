@@ -147,11 +147,8 @@ func (s *Server) processBatch() error {
 
 		seq.SetStartGenerationTime(time.Now())
 		for _, input := range seq.GetInputs() {
-			// result := genai.GenerateText(s.model, input.prompt)
-			result := genai.GenerateTextWithMetrics(s.model, input.GetPrompt(), seq.GetSamplingParameters())
-			fmt.Println("result: ", result)
-			seq.AppendPendingResponse(result)
-			// seq.pendingResponses := result
+			genai.GenerateTextWithMetrics(s.model, input.GetPrompt(), seq.GetSamplingParameters(), seq)
+			// log.Printf("gen result: ", seq.GetpendingResponses())
 		}
 		s.removeSequence(i, "")
 	}

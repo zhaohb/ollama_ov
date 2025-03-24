@@ -202,7 +202,7 @@ func SetSamplingParams(samplingparameters *SamplingParams) *C.ov_genai_generatio
 	return cConfig
 }
 
-func GenerateTextWithMetrics(pipeline *C.ov_genai_llm_pipeline, input string, samplingparameters *SamplingParams) string {
+func GenerateTextWithMetrics(pipeline *C.ov_genai_llm_pipeline, input string, samplingparameters *SamplingParams, seq *Sequence) string {
 	cInput := C.CString(input)
 	defer C.free(unsafe.Pointer(cInput))
 
@@ -211,8 +211,14 @@ func GenerateTextWithMetrics(pipeline *C.ov_genai_llm_pipeline, input string, sa
 
 	output_size := C.size_t(0)
 
+	// 创建 streamer_callback
+	var streamer_callback C.streamer_callback
+	streamer_callback.callback_func = (C.callback_function)(unsafe.Pointer(C.goCallbackBridge))
+
+	streamer_callback.args = unsafe.Pointer(seq)
+
 	C.ov_genai_llm_pipeline_start_chat(pipeline)
-	C.ov_genai_llm_pipeline_generate(pipeline, cInput, (*C.ov_genai_generation_config)(cConfig), (*C.streamer_callback)(nil), &result)
+	C.ov_genai_llm_pipeline_generate(pipeline, cInput, (*C.ov_genai_generation_config)(cConfig), &streamer_callback, &result)
 	C.ov_genai_llm_pipeline_finish_chat(pipeline)
 
 	C.ov_genai_decoded_results_get_string(result, (*C.char)(nil), &output_size)
@@ -308,10 +314,11 @@ func goCallbackBridge(args *C.char, gen_result unsafe.Pointer) C.int {
 
 		// 将 C 字符串转换为 Go 字符串并追加到切片中
 		goStr := C.GoString(args)
-		result.pendingResponses = append(result.pendingResponses, goStr)
+		result.AppendPendingResponse(goStr)
 
-		fmt.Printf("%s", goStr)
-		os.Stdout.Sync()
+		// fmt.Printf("%s", goStr)
+		// os.Stdout.Sync()
+		FlushPending((*Sequence)(result))
 		return C.OV_GENAI_STREAMMING_STATUS_RUNNING
 	} else {
 		fmt.Println("Callback executed with NULL message!")

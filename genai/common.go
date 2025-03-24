@@ -139,6 +139,11 @@ func (s *Sequence) GetDoneReason() string {
 	return s.doneReason
 }
 
+// GetDoneReason 返回 Sequence 的 doneReason 字段
+func (s *Sequence) GetpendingResponses() []string {
+	return s.pendingResponses
+}
+
 // GetNumPromptInputs 返回 Sequence 的 numPromptInputs 字段
 func (s *Sequence) GetNumPromptInputs() int {
 	return s.numPromptInputs
