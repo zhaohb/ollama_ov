@@ -584,7 +584,7 @@ Getting started with large language models and using the [GenAI](https://github.
 [Download](https://drive.google.com/file/d/1HEyZNNCbWSidKNQl4MRsD8FuwEZtdyew/view?usp=drive_link) + [Donwload OpenVINO GenAI](https://storage.openvinotoolkit.org/repositories/openvino_genai/packages/pre-release/2025.1.0.0rc1/openvino_genai_ubuntu22_2025.1.0.0rc1_x86_64.tar.gz)
 
 <div style="text-align:center;">
-  <img src="./images/ollama_ov_streaming.gif" alt="Ollama-OV" width="900" height="500">
+  <img src="./images/ollama_ov_streaming.gif" alt="Ollama-OV" width="900" height="400">
 </div>
 
 ## Model library
@@ -755,6 +755,8 @@ Then build and run Ollama from the root directory of the repository:
    ```shell
    cd openvino_genai_windows_2025.1.0.0rc1_x86_64
    setupvars.bat
+
+   set GODEBUG=cgocheck=0
    ```
   
 4. Setting cgo environment variables
@@ -793,6 +795,8 @@ Then build and run Ollama from the root directory of the repository:
    ```shell
    cd openvino_genai_ubuntu22_2025.1.0.0rc1_x86_64 
    source setupvars.sh
+
+   export GODEBUG=cgocheck=0
    ```
   
 4. Setting cgo environment variables
