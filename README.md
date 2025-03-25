@@ -841,6 +841,9 @@ Then build and run Ollama from the root directory of the repository:
 ### Terminal
 
 - [oterm](https://github.com/ggozad/oterm)
+   <div style="text-align:center;">
+      <img src="./images/oterm_demo.gif" alt="Ollama-OV" width="900" height="400">
+   </div>
 
 ## Future Development Plan
 Here are some features and improvements planned for future releases:
