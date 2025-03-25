@@ -837,6 +837,11 @@ Then build and run Ollama from the root directory of the repository:
    ollama run DeepSeek-R1-Distill-Qwen-7B-int4-ov:v1 
    ```
 
+## Community Integrations
+### Terminal
+
+- [oterm](https://github.com/ggozad/oterm)
+
 ## Future Development Plan
 Here are some features and improvements planned for future releases:
    
