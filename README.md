@@ -636,6 +636,10 @@ We added two new parameters to Modelfile based on the original parameters:
 
 ## Quick start
 
+### Start Ollama
+
+Setting `GODEBUG=cgocheck=0`env and `ollama serve` is used when you want to start ollama without running the desktop application.
+
 ### Import from openVINO IR
 How to create an Ollama model based on Openvino IR
 
@@ -722,10 +726,6 @@ ollama ps
 ```shell
 ollama stop DeepSeek-R1-Distill-Qwen-7B-int4-ov:v1 
 ```
-
-### Start Ollama
-
-Setting `GODEBUG=cgocheck=0`env and `ollama serve` is used when you want to start ollama without running the desktop application.
 
 ## Building from source
 
