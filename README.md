@@ -638,7 +638,23 @@ We added two new parameters to Modelfile based on the original parameters:
 
 ### Start Ollama
 
-Setting `GODEBUG=cgocheck=0`env and `ollama serve` is used when you want to start ollama without running the desktop application.
+1. First, set GODEGUG=cgocheck=0 env:
+
+   #### Linux
+   ```shell
+   export GODEGUG=cgocheck=0
+   ```
+
+   #### Windows 
+   ```shell
+   set GODEBUG=cgocheck=0
+   ```
+
+2. Next, `ollama serve` is used when you want to start ollama without running the desktop application:
+
+   ```shell
+   ollama serve
+   ```
 
 ### Import from openVINO IR
 How to create an Ollama model based on Openvino IR
