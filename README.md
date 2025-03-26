@@ -681,7 +681,7 @@ Let's take [deepseek-ai/DeepSeek-R1-Distill-Qwen-7B](https://hf-mirror.com/deeps
       
 4. Unzip OpenVINO GenAI package and set environment
    ```shell
-   cd openvino_genai_windows_2025.1.0.0rc1_x86_64
+   cd openvino_genai_windows_2025.2.0.0.dev20250320_x86_64
    setupvars.bat
    ```
 
