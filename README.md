@@ -577,15 +577,25 @@ See the [API documentation](./docs/api.md) for all endpoints.
 
 Getting started with large language models and using the [GenAI](https://github.com/openvinotoolkit/openvino.genai) backend.
 
+<div style="text-align:center;">
+  <img src="./images/ollama_ov_streaming.gif" alt="Ollama-OV" width="900" height="400">
+</div>
+
+We provide two ways to download the executable file of Ollama, one is to download it from Google Drive, and the other is to download it from Baidu Drive:
+## Google Driver
 ### Windows
 [Download exe](https://drive.google.com/file/d/1iizO9iLhSJGFUu6BgY3EwOchrCyzImUN/view?usp=drive_link) + [Download OpenVINO GenAI](https://storage.openvinotoolkit.org/repositories/openvino_genai/packages/nightly/2025.2.0.0.dev20250320/openvino_genai_windows_2025.2.0.0.dev20250320_x86_64.zip)
 
 ### Linux(Ubuntu 22.04)
 [Download](https://drive.google.com/file/d/1HEyZNNCbWSidKNQl4MRsD8FuwEZtdyew/view?usp=drive_link) + [Donwload OpenVINO GenAI](https://storage.openvinotoolkit.org/repositories/openvino_genai/packages/nightly/2025.2.0.0.dev20250320/openvino_genai_ubuntu22_2025.2.0.0.dev20250320_x86_64.tar.gz)
 
-<div style="text-align:center;">
-  <img src="./images/ollama_ov_streaming.gif" alt="Ollama-OV" width="900" height="400">
-</div>
+## 百度云盘
+### Windows
+[Download exe](https://pan.baidu.com/s/1jwolOPTnt48hX_C0f3oUlQ?pwd=awy4) + [Download OpenVINO GenAI](https://storage.openvinotoolkit.org/repositories/openvino_genai/packages/nightly/2025.2.0.0.dev20250320/openvino_genai_windows_2025.2.0.0.dev20250320_x86_64.zip)
+
+### Linux(Ubuntu 22.04)
+[Download](https://pan.baidu.com/s/11oTt0UIuuNGNffcC0NLk5g?pwd=1pa3) + [Donwload OpenVINO GenAI](https://storage.openvinotoolkit.org/repositories/openvino_genai/packages/nightly/2025.2.0.0.dev20250320/openvino_genai_ubuntu22_2025.2.0.0.dev20250320_x86_64.tar.gz)
+
 
 ## Model library
 The native Ollama only supports models in the GGUF format, the Ollama-OV invoke OpenVINO GenAI which requires models in the OpenVINO format. Therefore, we have enabled support for OpenVINO model files in Ollama. For public LLMs, you can access and download OpenVINO IR model from HuggingFace or ModelScope:
