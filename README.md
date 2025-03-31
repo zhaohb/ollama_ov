@@ -578,7 +578,7 @@ See the [API documentation](./docs/api.md) for all endpoints.
 Getting started with large language models and using the [GenAI](https://github.com/openvinotoolkit/openvino.genai) backend.
 
 <div style="text-align:center;">
-  <img src="./images/ollama_ov_streaming.gif" alt="Ollama-OV" width="900" height="400">
+  <img src="./images/ollama_openvino_new.gif" alt="Ollama-OV" width="900" height="400">
 </div>
 
 We provide two ways to download the executable file of Ollama, one is to download it from Google Drive, and the other is to download it from Baidu Drive:
@@ -630,10 +630,10 @@ The native Ollama only supports models in the GGUF format, the Ollama-OV invoke 
 
 Just provide above model link as example for part models, for other LLMs, you can check [OpenVINO GenAI model support list](https://github.com/openvinotoolkit/openvino.genai/blob/master/SUPPORTED_MODELS.md). If you have customized LLM, please follow [model conversion step of GenAI](https://github.com/openvinotoolkit/openvino.genai?tab=readme-ov-file#converting-and-compressing-text-generation-model-from-hugging-face-library). 
 
-## Performance to reference
+<!-- ## Performance to reference
 | Model                   | Ollama-OV with GPU (Driver version：32.0.101.6042)    | Ollama-OV with NPU (Driver version：32.0.100.3104)  | Device
 |-------------------------|---------------|-----------------|-----------------|
-| DeepSeek-R1-Distill-Qwen-7B | 19.58 tokens/s | 11.73 tokens/s | Intel(R) Core(TM) Ultra 7 268V 2.20GHz + 32G MEM |
+| DeepSeek-R1-Distill-Qwen-7B | 19.58 tokens/s | 11.73 tokens/s | Intel(R) Core(TM) Ultra 7 268V 2.20GHz + 32G MEM | -->
 
 
 
