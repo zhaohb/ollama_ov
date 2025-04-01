@@ -596,6 +596,16 @@ We provide two ways to download the executable file of Ollama, one is to downloa
 ### Linux(Ubuntu 22.04)
 [Download](https://pan.baidu.com/s/11oTt0UIuuNGNffcC0NLk5g?pwd=1pa3) + [Donwload OpenVINO GenAI](https://storage.openvinotoolkit.org/repositories/openvino_genai/packages/nightly/2025.2.0.0.dev20250320/openvino_genai_ubuntu22_2025.2.0.0.dev20250320_x86_64.tar.gz)
 
+## Docker
+### Linux
+We also prepared a Dockerfile to help developers quickly build Docker images: [Dockerfile](./Dockerfile_genai)
+```shell
+docker build -t ollama_openvino:v1 -f Dockerfile_genai .
+```
+then
+```shell
+docker run --rm -it ollama_openvino:v1
+```
 
 ## Model library
 The native Ollama only supports models in the GGUF format, the Ollama-OV invoke OpenVINO GenAI which requires models in the OpenVINO format. Therefore, we have enabled support for OpenVINO model files in Ollama. For public LLMs, you can access and download OpenVINO IR model from HuggingFace or ModelScope:
