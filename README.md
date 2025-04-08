@@ -659,11 +659,11 @@ We added two new parameters to Modelfile based on the original parameters:
 
 ### Start Ollama
 
-1. First, set GODEGUG=cgocheck=0 env:
+1. First, set GODEBUG=cgocheck=0 env:
 
    #### Linux
    ```shell
-   export GODEGUG=cgocheck=0
+   export GODEBUG=cgocheck=0
    ```
 
    #### Windows 
@@ -861,11 +861,11 @@ Then build and run Ollama from the root directory of the repository:
 
 ### Running local builds
 
-1. First, set GODEGUG=cgocheck=0 env:
+1. First, set GODEBUG=cgocheck=0 env:
 
    #### Linux
    ```shell
-   export GODEGUG=cgocheck=0
+   export GODEBUG=cgocheck=0
    ```
 
    #### Windows 
