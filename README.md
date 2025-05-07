@@ -896,6 +896,7 @@ Then build and run Ollama from the root directory of the repository:
    <div style="text-align:center;">
       <img src="./images/oterm_demo.gif" alt="Ollama-OV" width="900" height="400">
    </div>
+- [AnythingLLM](https://github.com/Mintplex-Labs/anything-llm)
 
 ## Future Development Plan
 Here are some features and improvements planned for future releases:
