@@ -99,13 +99,44 @@ func ContainsInSlice(items []string, item string) bool {
 func SelectDevice(device string, supportedDevices []string) string {
 	if device == "" || !ContainsInSlice(supportedDevices, device) {
 		if ContainsInSlice(supportedDevices, "GPU") {
-			log.Printf("The device specified in the modelfile is not currently supported by GenAI. Now we use GPU")
+			slog.Info(device, "The device specified in the modelfile is not currently supported by GenAI. Now we use GPU")
 			return "GPU"
 		}
-		log.Printf("The device specified in the modelfile is not currently supported by GenAI. Now we use CPU")
+		slog.Info(device, "The device specified in the modelfile is not currently supported by GenAI. Now we use CPU")
 		return "CPU"
 	}
 	return device
+}
+
+func addIndexToDuplicates(input []string) []string {
+	// output := make([]string, 0, len(input))
+	var output []string
+	counters := make(map[string]int) // 用于记录每个值的出现次数
+	duplicates := make(map[string]bool) // 用于标记哪些值是重复的
+
+	// 第一次遍历：统计每个值的出现次数，并标记重复值
+	for _, item := range input {
+		counters[item]++
+		if counters[item] > 1 {
+			duplicates[item] = true
+		}
+	}
+
+	// 第二次遍历：为重复值添加索引
+	for _, item := range input {
+		if duplicates[item] { // 如果是重复值
+			output = append(output, fmt.Sprintf("%s:%d", item, counters[item]-1))
+			counters[item]-- // 更新计数器
+		} else { // 如果不是重复值
+			output = append(output, item)
+		}
+	}
+	if ContainsInSlice(input, "GPU") {
+		output = append(output, "GPU")
+	}
+
+
+	return output
 }
 
 // NewGenaiServer will run a server
@@ -121,6 +152,8 @@ func NewGenaiServer(gpus discover.GpuInfoList, model string, modelname string, i
 	for i := 0; i < int(len(genai_device)); i++ {
 		genai_device_list = append(genai_device_list, genai_device[i]["device_name"])
 	}
+	genai_device_list = addIndexToDuplicates(genai_device_list)
+	// fmt.Println(genai_device_list)
 	inferdevice = SelectDevice(inferdevice, genai_device_list)
 
 	params := []string{
