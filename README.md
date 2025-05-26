@@ -570,8 +570,6 @@ See the [API documentation](./docs/api.md) for all endpoints.
 - [Langfuse](https://langfuse.com/docs/integrations/ollama) is an open source LLM observability platform that enables teams to collaboratively monitor, evaluate and debug AI applications.
 - [MLflow Tracing](https://mlflow.org/docs/latest/llms/tracing/index.html#automatic-tracing) is an open source LLM observability tool with a convenient API to log and visualize traces, making it easy to debug and evaluate GenAI applications.
 
-  </ul>
-</details>
 
 # Ollama-ov
 
@@ -907,3 +905,10 @@ Then build and run Ollama from the root directory of the repository:
 Here are some features and improvements planned for future releases:
    
 1. **Multimodal models**: Support for multimodal models that can process both text and image data.
+
+  </ul>
+</details>
+
+### Attention:
+This repository will no longer be maintained. For the latest code, please refer to:
+[ollama_openvino](https://github.com/openvinotoolkit/openvino_contrib/tree/master/modules/ollama_openvino)
