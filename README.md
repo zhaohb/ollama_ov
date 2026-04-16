@@ -911,4 +911,7 @@ Here are some features and improvements planned for future releases:
 
 ### Attention:
 This repository will no longer be maintained. For the latest code, please refer to:
+
 [ollama_openvino](https://github.com/openvinotoolkit/openvino_contrib/tree/master/modules/ollama_openvino)
+
+[new_ollama_openvino](https://github.com/zhaohb/ollama_openvino) (recommend)
